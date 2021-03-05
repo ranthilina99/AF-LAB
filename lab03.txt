@@ -1,0 +1,74 @@
+//IT no:-IT19240152
+
+
+//question 03
+
+db.getCollection('lab4').insertOne({
+"name": "John",
+"dateOfBirth": "1990-01-01T00:00:00Z",
+"subjects": ["Application frameworks", "Computer
+architecture"]
+})
+
+//question 04
+
+db.getCollection('lab4').find({"name":"John")})
+
+//question 05
+
+db.getCollection('lab4').find({"_id":ObjectId("603e7a865f4cb586eeae7729")})
+db.getCollection('lab4').find({})
+
+//question 06
+
+db.getCollection('lab4').insertMany([
+{
+    "name": "Smith",
+    "dateOfBirth": "1990-01-15T00:00:00Z",
+    "subjects": ["Application frameworks", "Computer architecture"],
+    "isActive": true
+},
+{
+    "name": "Jane",
+    "dateOfBirth": "1990-02-15T00:00:00Z",
+    "subjects": ["Application frameworks", "Computer architecture"],
+    "isActive": false
+}   
+])
+
+//question 07
+
+db.getCollection('lab4').update(
+{
+     "name":"Smith",
+     "isActive":{$eq:true}       
+},
+{
+    $push:{"subjects":"Distributed Computing"}
+    
+
+})
+
+db.getCollection('lab4').update(
+{
+    "name":"John"
+},
+{
+    $push:{"subjects":"Distributing ocmputing"}
+})
+
+//question 08
+
+db.getCollection('lab4').update(
+{
+    "name":"John"
+},
+{
+    $push:{"isActive": false}
+})
+
+//question 09
+
+db.getCollection('lab4').deleteOne({
+    "name":"john"
+    })

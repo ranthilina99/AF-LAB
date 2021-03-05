@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<!--01 Exercise-------------------------------------------------------------------->
+    <script>
+        function getValue(callback){
+            let value=0;
+            setTimeout(function (){
+                value=10;
+                callback(value);
+            },1000);
+        }
+        function getNewValue(value,callback){
+            setTimeout(function (){
+                callback(value*10);
+            },1000);
+        }
+
+        getValue(function (value){
+            getNewValue(value,function (newValue){
+                console.log(newValue);
+            })
+            console.log(value);
+        })
+    </script>
+
+<!--01 Exercise-------------------------------------------------------------------->
+    <script>
+        //promises
+        function getValue(){
+            let value=0;
+            return new Promise(function (resolve){
+                setTimeout(function (){
+                    value=10;
+                    resolve(value);
+                },1000);
+            })
+        }
+
+        getValue().then(function (value){
+            console.log(value)
+        })
+    </script>
+
+
+<!--02 Exercise-------------------------------------------------------------------->
+        <script>
+            function Vehicle(type){
+                this.type=type;
+                Vehicle.Count++;
+            }
+
+            Vehicle.prototype.drive=function (){
+                console.log(this.type  + " driving");
+            }
+            Vehicle.Count=0;
+            let vehicle=new Vehicle("toyota");
+            vehicle.drive();
+            console.log(Vehicle.Count);
+
+            function Car(type){
+                Vehicle.call(this,type);
+            }
+
+            Car.prototype=Object.create(Vehicle.prototype);
+            Car.prototype.constructor=Car;
+
+            Car.prototype.wheelBalance=function (){
+                console.log(this.type +" wheel balance");
+            }
+
+            let car=new Car( "Nissan");
+            car.wheelBalance();
+            car.drive();
+            console.log(Vehicle.Count);
+
+        </script>
+
+<!--03 Exercise-------------------------------------------------------------------->
+        <script>
+            let printName= () =>{
+                console.log("Hello arrow function");
+            }
+
+            printName();
+        </script>
+        <script>
+                let person={
+                    name:"kamal",
+                    age:44,
+                    printMe:()=>{
+                        console.log(name);
+                    }
+                }
+
+                person.printMe();
+        </script>
+
+
+<!--04 Exercise-------------------------------------------------------------------->
+<!--04 await and async-->
+    <script>
+        function getValue(){
+            let value=0;
+            return new Promise(function (resolve){
+                setTimeout(function (){
+                    value=10;
+                    resolve(value);
+                },1000);
+            })
+        }
+        function getNewValue(value){
+            return new Promise(function (resolve){
+                setTimeout(function (){
+                    resolve(value*10);
+                },1000);
+            })
+        }
+        function getNewValue1(value){
+           return value+1999;
+        }
+
+        async function print(){
+            let value=await getValue();
+            value=await getNewValue(value);
+            value=await getNewValue1(value);
+            console.log(value);
+        }
+
+        print();
+        // getValue().then(function (value){
+        //     return getNewValue(value);
+        // }).then(function (value){
+        //     console.log(value)
+        // })
+    </script>
+
+<!--05 Exercise-------------------------------------------------------------------->
+<script>
+    class Vehicle1{
+        static VehicleCount=0;
+        constructor(type) {
+            this.type=type;
+            Vehicle1.VehicleCount++;
+        }
+        drive(){
+            console.log(this.type+ " is driving");
+        }
+    }
+
+    let vehicle=new Vehicle1("toyota");
+    vehicle.drive();
+    console.log(Vehicle1.VehicleCount);
+
+    class Car extends Vehicle1{
+        constructor(type) {
+            super(type);
+        }
+        wheelBalance(){
+            console.log("wheel balance" + this.type);
+        }
+    }
+    let car=new Car("Nissan");
+    car.drive();
+    car.wheelBalance();
+    console.log(Vehicle1.VehicleCount);
+</script>
+
+<script>
+    class Square{
+        constructor(width) {
+            this.width=width;
+            this.height=width;
+        }
+        get area(){
+            return this.height*this.width;
+        }
+        set area(area){
+            this.width=Math.sqrt(area);
+            this.height=Math.sqrt(area);
+        }
+    }
+
+    let square=new Square(3);
+
+    console.log(square.area);
+    square.height=5
+    console.log(square.area);
+</script>
+</body>
+</html>
