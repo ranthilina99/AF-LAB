@@ -1,0 +1,73 @@
+var helpers = require("./node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _componentsPosts = require("./components/Posts");
+  var _componentsPostsDefault = _parcelHelpers.interopDefault(_componentsPosts);
+  var _jsxFileName = "G:\\3nd YR 1st SEMESTER\\Application frameworks\\lab\\lab 07\\lab7\\App.jsx";
+  class App extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      /*return <h1>Hello to React</h1>;*/
+      /*return <div>
+      <table>
+      <thead>
+      <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      {posts.map(post => {
+      return <tr key={post.id.toString()}>
+      <td>{post.id}</td>
+      <td>{post.name}</td>
+      <td>{post.description}</td>
+      </tr>
+      })}
+      </tbody>
+      </table>
+      </div>*/
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33,
+            columnNumber: 16
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_componentsPostsDefault.default, {
+          posts: posts,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34,
+            columnNumber: 13
+          }
+        }))
+      );
+    }
+  }
+  exports.default = App;
+  const posts = [{
+    id: 1,
+    name: 'React',
+    description: 'Best UI library'
+  }, {
+    id: 2,
+    name: 'Node',
+    description: 'Server side JS'
+  }];
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
